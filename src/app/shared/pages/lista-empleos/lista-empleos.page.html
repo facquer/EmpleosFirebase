@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista de empleos</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="dark" (click)="showCrearEmpleo()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-list id="lista1">
+    <ion-list-header>
+      Empleos disponibles
+    </ion-list-header>
+    <ion-item *ngFor="let empleo of empleados | async; trackBy: trackByFn">
+      <ion-avatar slot="start">
+        <img [src]="empleo.image.url">
+      </ion-avatar>
+      <ion-label color="dark" (click)="showEmpleo(empleo.uid)">
+        <h2>{{empleo.titulo}} </h2>
+        <p>{{empleo.salario}} $</p>
+        <ion-label>{{empleo.descripcion}}</ion-label>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  
+
+</ion-content>
